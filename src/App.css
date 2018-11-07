@@ -1,0 +1,154 @@
+@font-face {
+  font-family: "Lack";
+  src: url("Fonts/Lack-Regular.woff"),
+}
+
+body {
+  font-family: "Lack";
+}
+
+.title {
+  margin-top: 25px;
+  margin-left: 25px;
+  position: fixed;
+  font-size: 60px;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.react-grid-item:hover {
+  z-index: 999 !important;
+}
+
+.wrapper {
+  margin: auto;
+  width: 99%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 100px;
+  align-items: center;
+}
+
+.react-grid-layout {
+  margin-top: 100px;
+}
+
+/* .react-grid-layout {
+  filter: blur(10px);
+} */
+
+/* Group images right column */
+
+.react-grid-layout:nth-child(even) .stack.landscape {
+  transform: translate(50%,-50%) !important;
+}
+
+.react-grid-layout:nth-child(even) .stack.portrait {
+  transform: translate(100%,-50%) !important;
+}
+
+/* Group images left column */
+
+.react-grid-layout:nth-child(odd) .stack.landscape {
+  transform: translate(50%,50%) !important;
+}
+
+.react-grid-layout:nth-child(odd) .stack.portrait {
+  transform: translate(100%,30%) !important;
+}
+
+/* General stack parameters */
+
+.react-grid-layout .stack.portrait {
+  height: 250px !important;
+  width: 200px !important;
+}
+
+.react-grid-layout .stack.landscape {
+  height: 200px !important;
+  width: 300px !important;
+}
+
+.react-grid-layout:nth-child(1) {
+  left: 40px;
+  top: 20px;
+}
+
+.react-grid-layout:nth-child(2) {
+  left: 0px;
+  top: 40px;
+}
+
+.react-grid-layout:nth-child(3) {
+  left: -40px;
+  top: 20px;
+}
+
+.react-grid-layout:nth-child(4) {
+  left: -60px;
+  top: 20px;
+}
+
+
+.notexpanded {
+  height: 200px !important;
+}
+
+/* Rotate right stacks */
+
+.react-grid-layout:nth-child(even) {
+  transform: rotateZ(180deg) !important;
+}
+
+
+/* Left Column Individual image rotate */
+
+.react-grid-layout:nth-child(odd) div:nth-child(1) img {
+  transform: rotateZ(-10deg) !important;
+}
+
+.react-grid-layout:nth-child(odd) div:nth-child(2) img {
+  transform: rotateZ(5deg) !important;
+}
+
+.react-grid-layout:nth-child(odd) div:nth-child(3) img {
+  transform: rotateZ(6deg) !important;
+}
+
+.react-grid-layout:nth-child(odd) div:nth-child(4) img {
+  transform: rotateZ(3deg) !important;
+}
+
+/* Right Column Individual image rotate */
+
+.react-grid-layout:nth-child(even) div:nth-child(1) img {
+  transform: rotateZ(170deg) !important;
+}
+
+.react-grid-layout:nth-child(even) div:nth-child(2) img {
+  transform: rotateZ(185deg) !important;
+}
+
+.react-grid-layout:nth-child(even) div:nth-child(3) img {
+  transform: rotateZ(186deg) !important;
+}
+
+.react-grid-layout:nth-child(even) div:nth-child(4) img {
+  transform: rotateZ(183deg) !important;
+}
+
+.react-grid-layout:nth-child(even) div:nth-child(5) img {
+  transform: rotateZ(180deg) !important;
+}
+
+.react-grid-layout:nth-child(even) div:nth-child(6) img {
+  transform: rotateZ(180deg) !important;
+}
+
+.react-grid-layout:nth-child(even) div:nth-child(7) img {
+  transform: rotateZ(180deg) !important;
+}

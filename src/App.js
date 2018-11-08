@@ -1,17 +1,52 @@
 import React, { Component } from 'react';
 import './App.css';
 
-//modules
+//React Routers
 import { Router, Route, Switch } from '../node_modules/react-router';
 
+// Prismic JS
+import Prismic from 'prismic-javascript';
+import {Link, RichText, Date} from 'prismic-reactjs';
+
+
+//Grid
 import Grid from './Grid.js';
 
 class App extends React.Component {
   constructor(props) {
   super(props);
 
+  this.state = {
+    doc: null,}
+
 }
 
+// Link Resolver
+linkResolver(doc) {
+  // Define the url depending on the document type
+  if (doc.type === 'page') {
+    return '/page/' + doc.uid;
+  } else if (doc.type === 'blog_post') {
+    return '/blog/' + doc.uid;
+  }
+
+  // Default to homepage
+  return '/';
+}
+
+
+componentWillMount() {
+const apiEndpoint = 'https://caroline-dussuel.prismic.io/api/v2';
+
+Prismic.api(apiEndpoint).then(api => {
+  api.query('').then(response => {
+    if (response) {
+      this.setState({ doc: response.results });
+    }
+    console.log(this.state.doc[0].data.body[0].value[0].image.url);
+  });
+});
+}
 
 
   render() {

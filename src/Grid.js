@@ -44,7 +44,7 @@ class Grid extends React.Component {
 
   renderDiv = (i, index) => {
    return (
-       <div onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}  key={ i.i } onClick={ this.handleClick } className={ this.state.active ? this.props.imageList[index].orientation : `${this.props.imageList[index].orientation} stack` }><img className="image" alt="" src={this.props.imageList[index].img}/></div>
+       <div onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}  key={ i.i } onClick={ this.handleClick } className={ this.state.active ? this.props.imageList[index].orientation : `${this.props.imageList[index].orientation} stack` }><img className="image" alt="" src={this.props.imageList[index].url}/></div>
    );
  }
 

@@ -25,7 +25,7 @@ class App extends React.Component {
 
 renderGrids = (i,index) => {
   return (
-    <Grid key={index} layout={this.state.layout} rowHeight={60} imageList={i.image}/>
+    <Grid key={index} layout={this.state.layout[index]} rowHeight={61} imageList={i.image}/>
   );
 };
 
@@ -83,14 +83,16 @@ Prismic.api(apiEndpoint).then(api => {
 
     this.setState({ stacks: stacks });
 
-    console.log(stacks);
+    console.log(this.state.stacks);
 
     let layout = this.state.doc.map((i,index) =>
       (this.getParams(i)
       )
     );
 
-    this.setState({layout: layout[0]});
+    this.setState({layout: layout});
+
+    console.log(this.state.layout);
 
     let list = this.state.stacks.map((i, index) => this.renderGrids(i,index));
 

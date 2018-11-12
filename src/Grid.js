@@ -32,14 +32,17 @@ class Grid extends React.Component {
     } else {
       this.setState({originalHeight: e.currentTarget.style.height});
       this.setState({originalWidth: e.currentTarget.style.width});
-      e.currentTarget.style.height = '400px';
-      e.currentTarget.style.width = '600px';
+      this.setState({originalMaxWidth: e.currentTarget.children[0].style.maxWidth});
+      e.currentTarget.style.height = '445px';
+      e.currentTarget.style.width = '685px';
+      e.currentTarget.children[0].style.maxWidth = '685px';
     }
   };
 
   handleMouseLeave = (e) => {
     e.currentTarget.style.height = `${this.state.originalHeight}`;
     e.currentTarget.style.width = `${this.state.originalWidth}`;
+    e.currentTarget.children[0].style.maxWidth = `${this.state.originalMaxWidth}`;
   }
 
   renderDiv = (i, index) => {

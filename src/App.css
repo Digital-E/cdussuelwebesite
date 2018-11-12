@@ -64,13 +64,17 @@ body {
 /* General stack parameters */
 
 .react-grid-layout .stack.portrait {
-  height: 250px !important;
+  height: 280px !important;
   width: 200px !important;
 }
 
 .react-grid-layout .stack.landscape {
   height: 200px !important;
-  width: 300px !important;
+  width: 280px !important;
+}
+
+.react-grid-item.landscape img {
+  max-width: 545px;
 }
 
 .react-grid-layout:nth-child(1) {

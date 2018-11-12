@@ -21,8 +21,10 @@ class Grid extends React.Component {
   handleClick = () => this.setState({ active: !this.state.active });
 
   handleMouseEnter = (e) => {
-    // this.setState({originalSize: e.currentTarget.style.transform});
-    // e.currentTarget.style.transform = `${e.currentTarget.style.transform} scale(1.1)`;
+
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ return
+}
 
     if(e.currentTarget.classList[1] == 'portrait'){
       this.setState({originalHeight: e.currentTarget.style.height});
@@ -40,6 +42,9 @@ class Grid extends React.Component {
   };
 
   handleMouseLeave = (e) => {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ return
+}
     e.currentTarget.style.height = `${this.state.originalHeight}`;
     e.currentTarget.style.width = `${this.state.originalWidth}`;
     e.currentTarget.children[0].style.maxWidth = `${this.state.originalMaxWidth}`;
@@ -54,7 +59,7 @@ class Grid extends React.Component {
   render() {
 
     return (
-      <GridLayout orientation={this.props.orientation} className={ this.state.active ? 'layout expanded' : 'layout notexpanded' } layout={this.props.layout} cols={12} rowHeight={this.props.rowHeight} width={1200}>
+      <GridLayout orientation={this.props.orientation} className={ this.state.active ? 'layout expanded' : 'layout notexpanded' } layout={this.props.layout} cols={12} rowHeight={this.props.rowHeight} width={this.props.width}>
         {this.props.layout.map((i, index) => this.renderDiv(i, index))}
       </GridLayout>
     )

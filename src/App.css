@@ -92,11 +92,15 @@ body {
 
 .react-grid-layout .stack.landscape {
   height: 200px !important;
-  width: 290px !important;
+  width: 300px !important;
 }
 
-.react-grid-item.landscape img {
-  max-width: 545px;
+/* .react-grid-item.landscape img {
+  max-width: 510px;
+} */
+
+.expanded .react-grid-item.landscape img {
+  max-height: 190px;
 }
 
 .notexpanded {
@@ -118,7 +122,7 @@ body {
 }
 
 .react-grid-layout:nth-child(odd) div:nth-child(2) img {
-  transform: rotateZ(5deg) !important;
+  transform: rotateZ(-5deg) !important;
 }
 
 .react-grid-layout:nth-child(odd) div:nth-child(3) img {
@@ -126,6 +130,30 @@ body {
 }
 
 .react-grid-layout:nth-child(odd) div:nth-child(4) img {
+  transform: rotateZ(-3deg) !important;
+}
+
+.react-grid-layout:nth-child(odd) div:nth-child(5) img {
+  transform: rotateZ(5deg) !important;
+}
+
+.react-grid-layout:nth-child(odd) div:nth-child(6) img {
+  transform: rotateZ(-6deg) !important;
+}
+
+.react-grid-layout:nth-child(odd) div:nth-child(7) img {
+  transform: rotateZ(3deg) !important;
+}
+
+.react-grid-layout:nth-child(odd) div:nth-child(8) img {
+  transform: rotateZ(3deg) !important;
+}
+
+.react-grid-layout:nth-child(odd) div:nth-child(9) img {
+  transform: rotateZ(3deg) !important;
+}
+
+.react-grid-layout:nth-child(odd) div:nth-child(10) img {
   transform: rotateZ(3deg) !important;
 }
 
@@ -148,13 +176,29 @@ body {
 }
 
 .react-grid-layout:nth-child(even) div:nth-child(5) img {
-  transform: rotateZ(180deg) !important;
+  transform: rotateZ(175deg) !important;
 }
 
 .react-grid-layout:nth-child(even) div:nth-child(6) img {
-  transform: rotateZ(180deg) !important;
+  transform: rotateZ(189deg) !important;
 }
 
 .react-grid-layout:nth-child(even) div:nth-child(7) img {
-  transform: rotateZ(180deg) !important;
+  transform: rotateZ(172deg) !important;
+}
+
+.react-grid-layout:nth-child(even) div:nth-child(8) img {
+  transform: rotateZ(186deg) !important;
+}
+
+.react-grid-layout:nth-child(even) div:nth-child(9) img {
+  transform: rotateZ(183deg) !important;
+}
+
+.react-grid-layout:nth-child(even) div:nth-child(10) img {
+  transform: rotateZ(175deg) !important;
+}
+
+.react-grid-layout:nth-child(even) div:nth-child(11) img {
+  transform: rotateZ(188deg) !important;
 }

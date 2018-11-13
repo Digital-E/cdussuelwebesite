@@ -29,7 +29,7 @@ renderGrids = (i,index) => {
   );
 } else {
   return (
-    <Grid key={index} layout={this.state.layout[index]} rowHeight={61} width={1200} imageList={i.image}/>
+    <Grid key={index} layout={this.state.layout[index]} rowHeight={60} width={1200} imageList={i.image}/>
   );
 }
 };

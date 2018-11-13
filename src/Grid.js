@@ -35,8 +35,10 @@ class Grid extends React.Component {
       this.setState({originalHeight: e.currentTarget.style.height});
       this.setState({originalWidth: e.currentTarget.style.width});
       this.setState({originalMaxWidth: e.currentTarget.children[0].style.maxWidth});
+      this.setState({originalMaxHeight: e.currentTarget.children[0].style.maxHeight});
       e.currentTarget.style.height = '445px';
       e.currentTarget.style.width = '685px';
+      e.currentTarget.children[0].style.maxHeight = '445px';
       e.currentTarget.children[0].style.maxWidth = '685px';
     }
   };
@@ -48,6 +50,7 @@ class Grid extends React.Component {
     e.currentTarget.style.height = `${this.state.originalHeight}`;
     e.currentTarget.style.width = `${this.state.originalWidth}`;
     e.currentTarget.children[0].style.maxWidth = `${this.state.originalMaxWidth}`;
+    e.currentTarget.children[0].style.maxHeight = `${this.state.originalMaxHeight}`;
   }
 
   renderDiv = (i, index) => {

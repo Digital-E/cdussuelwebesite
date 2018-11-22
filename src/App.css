@@ -76,11 +76,11 @@ body {
 /* Group images left column */
 
 .react-grid-layout:nth-child(odd) .stack.landscape {
-  transform: translate(20%,0%) !important;
+  transform: translate(50%,0%) !important;
 }
 
 .react-grid-layout:nth-child(odd) .stack.portrait {
-  transform: translate(50%,-10%) !important;
+  transform: translate(100%,-10%) !important;
 }
 
 /* General stack parameters */
@@ -117,45 +117,45 @@ body {
 
 /* Left Column Individual image rotate */
 
-.react-grid-layout:nth-child(odd) div:nth-child(1) img {
-  transform: rotateZ(-10deg) !important;
-}
+  .react-grid-layout:nth-child(odd) div:nth-child(1) img {
+    transform: rotateZ(-10deg) !important;
+  }
 
-.react-grid-layout:nth-child(odd) div:nth-child(2) img {
-  transform: rotateZ(-5deg) !important;
-}
+  .react-grid-layout:nth-child(odd) div:nth-child(2) img {
+    transform: rotateZ(-5deg) !important;
+  }
 
-.react-grid-layout:nth-child(odd) div:nth-child(3) img {
-  transform: rotateZ(6deg) !important;
-}
+  .react-grid-layout:nth-child(odd) div:nth-child(3) img {
+    transform: rotateZ(6deg) !important;
+  }
 
-.react-grid-layout:nth-child(odd) div:nth-child(4) img {
-  transform: rotateZ(-3deg) !important;
-}
+  .react-grid-layout:nth-child(odd) div:nth-child(4) img {
+    transform: rotateZ(-3deg) !important;
+  }
 
-.react-grid-layout:nth-child(odd) div:nth-child(5) img {
-  transform: rotateZ(5deg) !important;
-}
+  .react-grid-layout:nth-child(odd) div:nth-child(5) img {
+    transform: rotateZ(5deg) !important;
+  }
 
-.react-grid-layout:nth-child(odd) div:nth-child(6) img {
-  transform: rotateZ(-6deg) !important;
-}
+  .react-grid-layout:nth-child(odd) div:nth-child(6) img {
+    transform: rotateZ(-6deg) !important;
+  }
 
-.react-grid-layout:nth-child(odd) div:nth-child(7) img {
-  transform: rotateZ(3deg) !important;
-}
+  .react-grid-layout:nth-child(odd) div:nth-child(7) img {
+    transform: rotateZ(3deg) !important;
+  }
 
-.react-grid-layout:nth-child(odd) div:nth-child(8) img {
-  transform: rotateZ(3deg) !important;
-}
+  .react-grid-layout:nth-child(odd) div:nth-child(8) img {
+    transform: rotateZ(3deg) !important;
+  }
 
-.react-grid-layout:nth-child(odd) div:nth-child(9) img {
-  transform: rotateZ(3deg) !important;
-}
+  .react-grid-layout:nth-child(odd) div:nth-child(9) img {
+    transform: rotateZ(3deg) !important;
+  }
 
-.react-grid-layout:nth-child(odd) div:nth-child(10) img {
-  transform: rotateZ(3deg) !important;
-}
+  .react-grid-layout:nth-child(odd) div:nth-child(10) img {
+    transform: rotateZ(3deg) !important;
+  }
 
 /* Right Column Individual image rotate */
 

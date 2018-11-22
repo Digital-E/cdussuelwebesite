@@ -11,6 +11,9 @@ import {Link, RichText, Date} from 'prismic-reactjs';
 //Grid
 import Grid from './Grid.js';
 
+//menu
+import Filter from './Filter.js'
+
 class App extends React.Component {
   constructor(props) {
   super(props);
@@ -19,13 +22,16 @@ class App extends React.Component {
     doc: null,
     stacks: null,
     layout: null,
-    list: null};
+    list: null,
+    loading: true
+  };
+
 }
 
 renderGrids = (i,index) => {
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     return (
-  <Grid key={index} layout={this.state.layout[index]} rowHeight={61} width={1200} imageList={i.image}/>
+  <Grid key={index} layout={this.state.layout[index]} rowHeight={60} width={1200} imageList={i.image}/>
   );
 } else {
   return (
@@ -48,7 +54,7 @@ getParams = (i) => {
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     return(i.data.body[0].value.map((i,index) => ({
       i:parameters[index][0],
-      x:0,
+      x:1,
       y:0,
       w:parseInt(parameters[index][3]),
       h:parseInt(parameters[index][4]),
@@ -70,6 +76,29 @@ getParams = (i) => {
 )
 )
 }
+}
+
+renderAll = () => {
+  let stacks = this.state.doc.map((i,index) =>
+    ({tags: i.uid.split('-'),
+      image: this.getUrls(i)
+    })
+  );
+
+  this.setState({ stacks: stacks });
+
+
+  let layout = this.state.doc.map((i,index) =>
+    this.getParams(i)
+  );
+
+  this.setState({layout: layout});
+
+  let list = this.state.stacks.map((i, index) => this.renderGrids(i,index));
+
+  this.setState({list: list});
+
+  console.log(this.state.list);
 }
 
 // Link Resolver
@@ -95,40 +124,86 @@ Prismic.api(apiEndpoint).then(api => {
       this.setState({ doc: response.results });
     }
 
-    let stacks = this.state.doc.map((i,index) =>
-      ({tags: i.uid.split('-'),
-        image: this.getUrls(i)
-      })
-    );
-
-    this.setState({ stacks: stacks });
-
-    console.log(this.state.stacks);
-
-    let layout = this.state.doc.map((i,index) =>
-      (this.getParams(i)
-      )
-    );
-
-    this.setState({layout: layout});
-
-    console.log(this.state.layout);
-
-    let list = this.state.stacks.map((i, index) => this.renderGrids(i,index));
-
-    this.setState({list: list});
+    this.renderAll();
 
   });
 })
 }
 
+handleListClick = (e) => {
+  const apiEndpoint = 'https://caroline-dussuel.prismic.io/api/v2';
+
+  if(e.target.innerHTML == "Photography") {
+
+    Prismic.api(apiEndpoint).then(api => {
+      api.query(Prismic.Predicates.at("document.tags", ['photography'])).then(response => {
+        if (response) {
+          this.setState({ doc: response.results });
+        }
+
+        this.renderAll();
+
+      });
+    })
+
+  } else if (e.target.innerHTML == "Fashiondesign") {
+
+    Prismic.api(apiEndpoint).then(api => {
+      api.query(Prismic.Predicates.at("document.tags", ['fashiondesign'])).then(response => {
+        if (response) {
+          this.setState({ doc: response.results });
+        }
+
+        this.renderAll();
+
+      });
+    })
+
+  } else if (e.target.innerHTML == "Styling") {
+
+    Prismic.api(apiEndpoint).then(api => {
+      api.query(Prismic.Predicates.at("document.tags", ['styling'])).then(response => {
+        if (response) {
+          this.setState({ doc: response.results });
+        }
+
+        this.renderAll();
+
+      });
+    })
+  } else {
+
+    Prismic.api(apiEndpoint).then(api => {
+      api.query('',{ orderings : '[document.last_publication_date desc]' }).then(response => {
+        if (response) {
+          this.setState({ doc: response.results });
+        }
+
+        this.renderAll();
+
+      });
+    })
+  };
+};
+
 
   render() {
+    let filterItems = ['All','Photography','Fashiondesign','Styling'];
 
     return (
+      <>
+      <Filter filterItems={filterItems}
+              doc={this.state.doc}
+              renderAll={this.renderAll}
+              getParams={this.getParams}
+              getUrls={this.getUrls}
+              renderGrids={this.renderGrids}
+              handleListClick={this.handleListClick}
+              />
       <div className="wrapper">
         {this.state.list}
     </div>
+      </>
     )
   }
 }

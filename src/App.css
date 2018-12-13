@@ -97,6 +97,14 @@ body {
   width: 300px !important;
 }
 
+#hide {
+  visibility: hidden;
+}
+
+#show {
+  visibility: visible;
+}
+
 
 .notexpanded {
   height: 200px !important;

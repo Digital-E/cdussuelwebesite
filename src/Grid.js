@@ -17,7 +17,8 @@ class Grid extends React.Component {
      originalSize: "",
      originalHeight: "",
      originalWidth: "",
-     loaded: false
+     numberOfImagesLoaded:[{loaded: "ok"}],
+     loaded: false,
    };
 
   this.handleClick = this.handleClick.bind(this);
@@ -36,10 +37,10 @@ class Grid extends React.Component {
 
     if(e.currentTarget.classList[1] === 'portrait'){
       this.setState({originalTransform: e.currentTarget.style.transform});
-      e.currentTarget.style.transform = `${e.currentTarget.style.transform} scale(1.5)`;
+      e.currentTarget.style.transform = `${e.currentTarget.style.transform} scale(2)`;
     } else {
       this.setState({originalTransform: e.currentTarget.style.transform});
-      e.currentTarget.style.transform = `${e.currentTarget.style.transform} scale(1.5)`;
+      e.currentTarget.style.transform = `${e.currentTarget.style.transform} scale(2)`;
     }
   };
 
@@ -50,12 +51,34 @@ class Grid extends React.Component {
     e.currentTarget.style.transform = `${this.state.originalTransform}`;
   }
 
+loadedIndividual() {
+  // Create a new ID and use
+  // a random number as the value
+  return {
+    loaded: "ok"
+  };
+}
+
+  loadCount = () => {
+    let countImagesToLoad = this.props.imageList.length;
+    this.setState({countImagesToLoad: this.props.imageList.length });
+    this.setState({numberOfImagesLoaded: [...this.state.numberOfImagesLoaded, this.loadedIndividual()]});
+    console.log(countImagesToLoad);
+    console.log(this.state.numberOfImagesLoaded);
+    if(this.state.countImagesToLoad == this.state.numberOfImagesLoaded.length)
+    this.setState({
+      loaded: true
+    });
+    console.log(this.state.loaded);
+  }
+
+
   renderDiv = (i, index) => {
-          return (
-        <div onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}  key={ i.i } onClick={ this.handleClick } className={ this.state.active ? this.props.imageList[index].orientation : `${this.props.imageList[index].orientation} stack` }>
-            <img className="image" alt="" src={this.props.imageList[index].url}/>
-        </div>
-      )
+      return (
+    <div id={this.state.loaded ? 'show' : 'hide'} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}  key={ i.i } onClick={ this.handleClick } className={ this.state.active ? this.props.imageList[index].orientation : `${this.props.imageList[index].orientation} stack` }>
+      <img onLoad={this.loadCount} className="image" alt="" src={this.props.imageList[index].url}/>
+    </div>
+  )
  }
 
 

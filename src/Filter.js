@@ -12,7 +12,9 @@ class Filter extends React.Component {
 
   render() {
 
-    const listItems = this.props.filterItems.map((i) => <div key={i} onClick={this.props.handleListClick}>{i}</div>);
+    let filterItems = ['All','Photography','Fashiondesign','Styling'];
+
+    const listItems = filterItems.map((i) => <div key={i} onClick={this.props.handleListClick}>{i}</div>);
 
     return(
       <div>{listItems}</div>

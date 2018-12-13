@@ -35,19 +35,11 @@ class Grid extends React.Component {
 }
 
     if(e.currentTarget.classList[1] === 'portrait'){
-      this.setState({originalHeight: e.currentTarget.style.height});
-      this.setState({originalWidth: e.currentTarget.style.width});
-      e.currentTarget.style.height = '600px';
-      e.currentTarget.style.width = '400px';
+      this.setState({originalTransform: e.currentTarget.style.transform});
+      e.currentTarget.style.transform = `${e.currentTarget.style.transform} scale(1.5)`;
     } else {
-      this.setState({originalHeight: e.currentTarget.style.height});
-      this.setState({originalWidth: e.currentTarget.style.width});
-      this.setState({originalMaxWidth: e.currentTarget.children[0].style.maxWidth});
-      this.setState({originalMaxHeight: e.currentTarget.children[0].style.maxHeight});
-      e.currentTarget.style.height = '445px';
-      e.currentTarget.style.width = '685px';
-      e.currentTarget.children[0].style.maxHeight = '445px';
-      e.currentTarget.children[0].style.maxWidth = '685px';
+      this.setState({originalTransform: e.currentTarget.style.transform});
+      e.currentTarget.style.transform = `${e.currentTarget.style.transform} scale(1.5)`;
     }
   };
 
@@ -55,10 +47,7 @@ class Grid extends React.Component {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  return
 }
-    e.currentTarget.style.height = `${this.state.originalHeight}`;
-    e.currentTarget.style.width = `${this.state.originalWidth}`;
-    e.currentTarget.children[0].style.maxWidth = `${this.state.originalMaxWidth}`;
-    e.currentTarget.children[0].style.maxHeight = `${this.state.originalMaxHeight}`;
+    e.currentTarget.style.transform = `${this.state.originalTransform}`;
   }
 
   renderDiv = (i, index) => {

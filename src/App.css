@@ -33,10 +33,12 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+  transform-origin: bottom left;
 }
 
 .react-grid-item:hover {
   z-index: 999 !important;
+  transition-duration: 0s !important;
 }
 
 .react-grid-layout {
@@ -95,13 +97,6 @@ body {
   width: 300px !important;
 }
 
-/* .react-grid-item.landscape img {
-  max-width: 510px;
-} */
-
-.expanded .react-grid-item.landscape img {
-  max-height: 190px;
-}
 
 .notexpanded {
   height: 200px !important;

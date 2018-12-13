@@ -188,18 +188,11 @@ handleListClick = (e) => {
 
 
   render() {
-    let filterItems = ['All','Photography','Fashiondesign','Styling'];
+
 
     return (
       <>
-      <Filter filterItems={filterItems}
-              doc={this.state.doc}
-              renderAll={this.renderAll}
-              getParams={this.getParams}
-              getUrls={this.getUrls}
-              renderGrids={this.renderGrids}
-              handleListClick={this.handleListClick}
-              />
+      <Filter handleListClick={this.handleListClick}/>
       <div className="wrapper">
         {this.state.list}
     </div>

@@ -133,7 +133,19 @@ Prismic.api(apiEndpoint).then(api => {
 handleListClick = (e) => {
   const apiEndpoint = 'https://caroline-dussuel.prismic.io/api/v2';
 
+  //blur list item
+
+  let filterList = e.target.parentNode.children;
+
+  for (let i=0; i<filterList.length; i++) {
+    filterList[i].classList = "noBlurFilter";
+  }
+
+  e.target.className = 'blurFilter';
+
   if(e.target.innerHTML == "Photography") {
+
+    e.target.className = 'blurFilter';
 
     Prismic.api(apiEndpoint).then(api => {
       api.query(Prismic.Predicates.at("document.tags", ['photography'])).then(response => {
@@ -147,6 +159,8 @@ handleListClick = (e) => {
     })
 
   } else if (e.target.innerHTML == "Fashiondesign") {
+
+    e.target.className = 'blurFilter';
 
     Prismic.api(apiEndpoint).then(api => {
       api.query(Prismic.Predicates.at("document.tags", ['fashiondesign'])).then(response => {

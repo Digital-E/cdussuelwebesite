@@ -8,6 +8,27 @@ body {
   overflow-x: hidden;
 }
 
+.filter {
+  position: fixed;
+  bottom: 0;
+  margin-left: 50px;
+  margin-bottom: 50px;
+}
+
+.blurFilter {
+  filter: blur(2px);
+  transition-duration: 3s;
+}
+
+.noBlurFilter {
+  filter: blur(0px);
+  transition-duration: 3s;
+}
+
+.filter:hover {
+  cursor: pointer;
+}
+
 .title {
   top: 0px;
   left: 50%;
@@ -39,10 +60,6 @@ body {
 .react-grid-item:hover {
   z-index: 999 !important;
   transition-duration: 0s !important;
-}
-
-.react-grid-layout {
-  /* overflow-x: hidden; */
 }
 
 .wrapper {
@@ -98,11 +115,12 @@ body {
 }
 
 #hide {
-  visibility: hidden;
+  opacity: 0;
 }
 
 #show {
-  visibility: visible;
+  opacity: 1;
+  transition: 0.3s;
 }
 
 

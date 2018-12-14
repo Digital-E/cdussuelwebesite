@@ -52,8 +52,6 @@ class Grid extends React.Component {
   }
 
 loadedIndividual() {
-  // Create a new ID and use
-  // a random number as the value
   return {
     loaded: "ok"
   };
@@ -63,19 +61,16 @@ loadedIndividual() {
     let countImagesToLoad = this.props.imageList.length;
     this.setState({countImagesToLoad: this.props.imageList.length });
     this.setState({numberOfImagesLoaded: [...this.state.numberOfImagesLoaded, this.loadedIndividual()]});
-    console.log(countImagesToLoad);
-    console.log(this.state.numberOfImagesLoaded);
     if(this.state.countImagesToLoad == this.state.numberOfImagesLoaded.length)
     this.setState({
       loaded: true
     });
-    console.log(this.state.loaded);
   }
 
 
   renderDiv = (i, index) => {
       return (
-    <div id={this.state.loaded ? 'show' : 'hide'} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}  key={ i.i } onClick={ this.handleClick } className={ this.state.active ? this.props.imageList[index].orientation : `${this.props.imageList[index].orientation} stack` }>
+    <div  onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}  key={ i.i } onClick={ this.handleClick } className={ this.state.active ? this.props.imageList[index].orientation : `${this.props.imageList[index].orientation} stack` }>
       <img onLoad={this.loadCount} className="image" alt="" src={this.props.imageList[index].url}/>
     </div>
   )
@@ -86,7 +81,7 @@ loadedIndividual() {
       return (
         <LazyLoad height={200}>
         <Fade duration={2000}>
-        <GridLayout orientation={this.props.orientation} className={ this.state.active ? 'layout expanded' : 'layout notexpanded' } layout={this.props.layout} cols={12} rowHeight={this.props.rowHeight} width={this.props.width}>
+        <GridLayout orientation={this.props.orientation} className={ this.state.loaded ? (this.state.active ? 'layout expanded show' : 'layout notexpanded show') : 'layout notexpanded hide' } layout={this.props.layout} cols={12} rowHeight={this.props.rowHeight} width={this.props.width}>
           {this.props.layout.map((i, index) => this.renderDiv(i, index))}
         </GridLayout>
         </Fade>

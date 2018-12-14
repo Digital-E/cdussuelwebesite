@@ -114,13 +114,24 @@ body {
   width: 300px !important;
 }
 
-#hide {
+
+.hide {
   opacity: 0;
 }
 
-#show {
-  opacity: 1;
-  transition: 0.3s;
+.show {
+  animation: unblur 1s;
+}
+
+@keyframes unblur {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
 }
 
 

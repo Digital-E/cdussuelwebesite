@@ -17,7 +17,7 @@ class Filter extends React.Component {
     const listItems = filterItems.map((i) => <div key={i} onClick={this.props.handleListClick}>{i}</div>);
 
     return(
-      <div class="filter">{listItems}</div>
+      <div class={this.props.className}>{listItems}</div>
     )
   }
 }

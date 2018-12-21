@@ -11,8 +11,16 @@ import {Link, RichText, Date} from 'prismic-reactjs';
 //Grid
 import Grid from './Grid.js';
 
-//menu
+//Filter
 import Filter from './Filter.js'
+
+//About
+
+import About from './About.js'
+
+//Title
+
+import Title from './Title.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +31,8 @@ class App extends React.Component {
     stacks: null,
     layout: null,
     list: null,
-    loading: true
+    loading: true,
+    blur: false
   };
 
 }
@@ -54,7 +63,7 @@ getParams = (i) => {
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     return(i.data.body[0].value.map((i,index) => ({
       i:parameters[index][0],
-      x:1,
+      x:0,
       y:0,
       w:parseInt(parameters[index][3]),
       h:parseInt(parameters[index][4]),
@@ -98,7 +107,6 @@ renderAll = () => {
 
   this.setState({list: list});
 
-  console.log(this.state.list);
 }
 
 // Link Resolver
@@ -128,6 +136,12 @@ Prismic.api(apiEndpoint).then(api => {
 
   });
 })
+}
+
+handleClick = () => {
+  this.setState({
+    blur: !this.state.blur
+  })
 }
 
 handleListClick = (e) => {
@@ -206,8 +220,10 @@ handleListClick = (e) => {
 
     return (
       <>
-      <Filter handleListClick={this.handleListClick}/>
-      <div className="wrapper">
+      <Title/>
+      <About class={this.state.blur} handleClick={this.handleClick}/>
+      <Filter className={this.state.blur ? 'filter blurAll' : 'filter'} handleListClick={this.handleListClick}/>
+      <div className={this.state.blur ? 'wrapper blurAll' : 'wrapper'}>
         {this.state.list}
     </div>
       </>

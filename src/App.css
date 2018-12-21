@@ -8,11 +8,69 @@ body {
   overflow-x: hidden;
 }
 
+.blurAll {
+  filter: blur(20px);
+  transition-duration: 2s;
+}
+
+.about-button {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  margin-top: 35px;
+  margin-right: 50px;
+  z-index: 999;
+}
+
+.about-button:hover {
+  cursor: pointer;
+}
+
+.about-button img {
+  height: 30px;
+}
+
+.hidden-about-text {
+  opacity: 0 !important;
+  transition-duration: 3s;
+  display: hidden;
+}
+
+.about-text {
+  position: fixed;
+  opacity: 1;
+  transition-duration: 1s;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  vertical-align: middle;
+  z-index: 998;
+  display: none;
+}
+
 .filter {
   position: fixed;
   bottom: 0;
   margin-left: 50px;
   margin-bottom: 50px;
+  transition-duration: 2s;
+}
+
+@media(max-width: 576px){
+  .about-button {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    bottom: 0;
+    margin-top: 0px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    z-index: 999;
+  }
+
+  .filter {
+    display: none;
+  }
 }
 
 .blurFilter {
@@ -30,22 +88,21 @@ body {
 }
 
 .title {
-  top: 0px;
-  left: 50%;
-  transform: translate(-50%);
-  margin: 20px auto;
   position: fixed;
+  top: 0px;
+  margin: 20px auto;
   font-size: 40px;
   white-space: nowrap;
+  text-align: center;
+  width: 100%;
 }
 
 @media(min-width: 576px) {
   .title {
     top: 0px;
-    left: 0%;
     margin: 20px 0px 0px 50px;
-    transform: translate(0%);
     position: fixed;
+    text-align: left;
     font-size: 60px;
   }
 }
@@ -69,6 +126,7 @@ body {
   grid-template-columns: repeat(1, 1fr);
   grid-row-gap: 200px;
   align-items: center;
+  transition-duration: 2s;
 }
 
 @media(min-width: 576px) {
@@ -100,6 +158,16 @@ body {
 
 .react-grid-layout:nth-child(odd) .stack.portrait {
   transform: translate(100%,-10%) !important;
+}
+
+@media(max-width: 576px) {
+  .react-grid-layout:nth-child(odd) .stack.landscape {
+    transform: translate(15%,15%) !important;
+  }
+
+  .react-grid-layout:nth-child(odd) .stack.portrait {
+    transform: translate(50%,0%) !important;
+  }
 }
 
 /* General stack parameters */

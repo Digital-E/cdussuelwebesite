@@ -14,12 +14,12 @@ class About extends React.Component {
       <>
       <div onClick={this.props.handleClick} class="about-button"><img src={info}/></div>
       <div class={this.props.class ? 'about-text' : 'about-text hidden-about-text'}>
-      lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum <br/>
-      lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum <br/>
-      lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum <br/>
-      lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum <br/>
-      lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum <br/>
       </div>
+      <p class={this.props.class ? 'about-inner-text' : 'hidden-about-inner-text'}>
+      Either through Photography, Fashion Design, or Art Direction, Caroline Dussuel
+      constantly seeks to channel her ethically-oriented vision and environmentally conscious mind through her work for an ever more
+      sustainable future.<br/>
+      </p>
       </>
     )
   }

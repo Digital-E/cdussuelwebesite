@@ -31,21 +31,39 @@ body {
 }
 
 .hidden-about-text {
-  opacity: 0 !important;
-  transition-duration: 3s;
-  display: hidden;
+  display: none !important;
 }
 
 .about-text {
   position: fixed;
-  opacity: 1;
-  transition-duration: 1s;
+  top: 0;
+  transition-duration: 3s;
   width: 100vw;
   height: 100vh;
-  text-align: center;
-  vertical-align: middle;
   z-index: 998;
-  display: none;
+  display: block;
+}
+
+.hidden-about-inner-text {
+  position: fixed;
+  font-size: 40px;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%,-50%);
+  opacity: 0 !important;
+  transition-duration: 1s;
+  z-index: 0;
+}
+
+.about-inner-text {
+  position: fixed;
+  font-size: 40px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  opacity: 1;
+  transition-duration: 5s;
+  z-index: 998;
 }
 
 .filter {
@@ -95,6 +113,7 @@ body {
   white-space: nowrap;
   text-align: center;
   width: 100%;
+  transition-duration: 3s;
 }
 
 @media(min-width: 576px) {

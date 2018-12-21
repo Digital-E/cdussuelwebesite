@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-const Title = () => {
-  return <div className="title">caroline dussuel</div>
+const Title = (props) => {
+  return <div class={props.className}>caroline dussuel</div>
 }
 
 export default Title;

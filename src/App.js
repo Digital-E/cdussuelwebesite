@@ -220,7 +220,7 @@ handleListClick = (e) => {
 
     return (
       <>
-      <Title/>
+      <Title className={this.state.blur ? 'title blurAll' : 'title'}/>
       <About class={this.state.blur} handleClick={this.handleClick}/>
       <Filter className={this.state.blur ? 'filter blurAll' : 'filter'} handleListClick={this.handleListClick}/>
       <div className={this.state.blur ? 'wrapper blurAll' : 'wrapper'}>

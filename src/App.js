@@ -22,6 +22,8 @@ import About from './About.js'
 
 import Title from './Title.js'
 
+
+
 class App extends React.Component {
   constructor(props) {
   super(props);
@@ -44,7 +46,7 @@ renderGrids = (i,index) => {
   );
 } else {
   return (
-    <Grid key={index} layout={this.state.layout[index]} rowHeight={60} width={1200} imageList={i.image}/>
+    <Grid key={index} info={i.info} layout={this.state.layout[index]} rowHeight={60} width={1200} imageList={i.image}/>
   );
 }
 };
@@ -90,6 +92,7 @@ getParams = (i) => {
 renderAll = () => {
   let stacks = this.state.doc.map((i,index) =>
     ({tags: i.uid.split('-'),
+      info: i.uid,
       image: this.getUrls(i)
     })
   );
@@ -221,7 +224,7 @@ handleListClick = (e) => {
     return (
       <>
       <Title className={this.state.blur ? 'title blurAll' : 'title'}/>
-      <About class={this.state.blur} handleClick={this.handleClick}/>
+      <About className={this.state.blur} handleClick={this.handleClick}/>
       <Filter className={this.state.blur ? 'filter blurAll' : 'filter'} handleListClick={this.handleListClick}/>
       <div className={this.state.blur ? 'wrapper blurAll' : 'wrapper'}>
         {this.state.list}

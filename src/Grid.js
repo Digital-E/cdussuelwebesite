@@ -8,17 +8,17 @@ import '../node_modules/react-resizable/css/styles.css';
 
 import Fade from 'react-reveal/Fade';
 
+import MouseText from './MouseText.js'
+
 class Grid extends React.Component {
   constructor(props) {
   super(props);
 
   this.state = {
      active: false,
-     originalSize: "",
-     originalHeight: "",
-     originalWidth: "",
      numberOfImagesLoaded:[{loaded: "ok"}],
      loaded: false,
+     info: {text: '', x: '', y: ''}
    };
 
   this.handleClick = this.handleClick.bind(this);
@@ -29,11 +29,22 @@ class Grid extends React.Component {
 
   handleClick = () => this.setState({ active: !this.state.active });
 
+  handleMouseMove = (e) => {
+    this.setState({
+      info: {text: this.props.info, x: e.pageX, y: e.pageY}
+    });
+    console.log(this.state.info);
+  }
+
+
   handleMouseEnter = (e) => {
 
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  return
 }
+
+   this.setState({mouseIn: true});
+
 
     if(e.currentTarget.classList[1] === 'portrait'){
       this.setState({originalTransform: e.currentTarget.style.transform});
@@ -48,6 +59,7 @@ class Grid extends React.Component {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  return
 }
+  this.setState({mouseIn: false});
     e.currentTarget.style.transform = `${this.state.originalTransform}`;
   }
 
@@ -70,7 +82,7 @@ loadedIndividual() {
 
   renderDiv = (i, index) => {
       return (
-    <div  onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}  key={ i.i } onClick={ this.handleClick } className={ this.state.active ? this.props.imageList[index].orientation : `${this.props.imageList[index].orientation} stack` }>
+    <div onMouseMove={this.handleMouseMove} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}  key={ i.i } onClick={ this.handleClick } className={ this.state.active ? `${this.props.imageList[index].orientation} unstack` : `${this.props.imageList[index].orientation} stack` }>
       <img onLoad={this.loadCount} className="image" alt="" src={this.props.imageList[index].url}/>
     </div>
   )
@@ -79,6 +91,8 @@ loadedIndividual() {
 
   render() {
       return (
+        <>
+        <MouseText mouseIn={this.state.mouseIn} info={this.state.info}/>
         <LazyLoad height={200}>
         <Fade duration={2000}>
         <GridLayout orientation={this.props.orientation} className={ this.state.loaded ? (this.state.active ? 'layout expanded show' : 'layout notexpanded show') : 'layout notexpanded hide' } layout={this.props.layout} cols={12} rowHeight={this.props.rowHeight} width={this.props.width}>
@@ -86,6 +100,7 @@ loadedIndividual() {
         </GridLayout>
         </Fade>
         </LazyLoad>
+        </>
       )
   }
 }

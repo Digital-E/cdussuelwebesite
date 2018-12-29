@@ -3,7 +3,7 @@
   src: url("Fonts/Lack-Regular.woff") format('woff'),
        url('Fonts/Lack-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
        url('Fonts/Lack-Regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('Fonts/Lack-Regular')  format('truetype') /* Safari, Android, iOS */
+       url('Fonts/Lack-Regular.ttf')  format('truetype') /* Safari, Android, iOS */
 }
 
 body {

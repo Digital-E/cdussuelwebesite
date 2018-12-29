@@ -92,13 +92,15 @@ getParams = (i) => {
 renderAll = () => {
   let stacks = this.state.doc.map((i,index) =>
     ({tags: i.uid.split('-'),
-      info: i.uid,
+      info: i.data.title[0].text,
       image: this.getUrls(i)
     })
   );
 
+
   this.setState({ stacks: stacks });
 
+  console.log(this.state.stacks);
 
   let layout = this.state.doc.map((i,index) =>
     this.getParams(i)

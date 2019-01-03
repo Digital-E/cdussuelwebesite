@@ -100,7 +100,6 @@ renderAll = () => {
 
   this.setState({ stacks: stacks });
 
-  console.log(this.state.stacks);
 
   let layout = this.state.doc.map((i,index) =>
     this.getParams(i)
